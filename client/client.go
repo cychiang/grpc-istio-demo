@@ -19,10 +19,10 @@ func initGrpcClientPool() (*grpcpool.Pool, error) {
 	}
 	pool, err := grpcpool.New(
 		factory,
-		10,            /* initial connections */
-		50,       /* maximum connections */
-		10 * time.Second, /* idle timeout        */
-		time.Minute,      /* maxLifeDuration     */
+		10,             /* initial connections */
+		50,             /* maximum connections */
+		10*time.Second, /* idle timeout        */
+		time.Minute,    /* maxLifeDuration     */
 	)
 	if err != nil {
 		log.Printf("Failed to create gRPC pool: %v", err)
@@ -41,7 +41,7 @@ func main() {
 	defer pool.Close()
 	// init context, it's good to set an timeout
 	ctx, cancel := context.WithTimeout(
-		context.Background(), 5 * time.Second)
+		context.Background(), 5*time.Second)
 	defer cancel()
 	defer ctx.Done()
 }
