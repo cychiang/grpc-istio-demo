@@ -1,0 +1,28 @@
+syntax = "proto3";
+package service;
+
+service Comm {
+    rpc Get (GetParams) returns (GetResponse);
+    rpc Put (PutParams) returns (PutResponse);
+}
+
+message GetParams {
+    string key = 1;
+    int64 timestamp = 2;
+}
+
+message GetResponse {
+    string message = 1;
+    int64 timestamp = 2;
+}
+
+message PutParams {
+    string key = 1;
+    string message = 2;
+    int64 timestamp = 3;
+}
+
+message PutResponse {
+    int32 status = 1;
+    int64 timestamp = 2;
+}
